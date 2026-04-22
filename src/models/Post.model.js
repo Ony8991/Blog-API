@@ -58,14 +58,13 @@ postSchema.virtual("readingTime").get(function () {
   return Math.ceil(wordCount / wordsPerMinute) + " min read";
 });
 
-postSchema.pre("save", function (next) {
-  if (!this.isModified("title")) return next();
+postSchema.pre("save", async function () {
+  if (!this.isModified("title")) return;
   this.slug = this.title
     .toLowerCase()
     .trim()
     .replace(/[^a-z0-9 ]/g, "")
     .replace(/\s+/g, "-");
-  next();
 });
 
 postSchema.index({ author: 1 });
