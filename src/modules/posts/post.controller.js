@@ -2,6 +2,14 @@ const postService = require("./post.service");
 const ApiResponse = require("../../utils/ApiResponse");
 
 class PostController {
+    constructor() {
+  this.createPost = this.createPost.bind(this);
+  this.getAllPosts = this.getAllPosts.bind(this);
+  this.getPostBySlug = this.getPostBySlug.bind(this);
+  this.updatePost = this.updatePost.bind(this);
+  this.deletePost = this.deletePost.bind(this);
+  this.getMyPosts = this.getMyPosts.bind(this);
+}
   async createPost(req, res, next) {
     try {
       const post = await postService.createPost(req.body, req.user._id);

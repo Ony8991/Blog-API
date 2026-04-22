@@ -2,6 +2,12 @@ const commentService = require("./comment.service");
 const ApiResponse = require("../../utils/ApiResponse");
 
 class CommentController {
+    constructor() {
+  this.createComment = this.createComment.bind(this);
+  this.getPostComments = this.getPostComments.bind(this);
+  this.updateComment = this.updateComment.bind(this);
+  this.deleteComment = this.deleteComment.bind(this);
+}
   async createComment(req, res, next) {
     try {
       const comment = await commentService.createComment(

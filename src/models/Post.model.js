@@ -68,7 +68,6 @@ postSchema.pre("save", function (next) {
   next();
 });
 
-postSchema.index({ slug: 1 });
 postSchema.index({ author: 1 });
 postSchema.index({ tags: 1 });
 

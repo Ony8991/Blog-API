@@ -2,6 +2,12 @@ const authService = require("./auth.service");
 const ApiResponse = require("../../utils/ApiResponse");
 
 class AuthController {
+  constructor() {
+    this.register = this.register.bind(this);
+    this.login = this.login.bind(this);
+    this.getMe = this.getMe.bind(this);
+  }
+
   async register(req, res, next) {
     try {
       const result = await authService.register(req.body);
