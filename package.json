@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node src/server.js",
-    "dev": "nodemon src/server.js",
-    "test": "jest --detectOpenHandles"
-  },
+  "start": "node src/server.js",
+  "dev": "nodemon src/server.js",
+  "test": "cross-env NODE_ENV=test jest --detectOpenHandles --forceExit",
+  "test:watch": "cross-env NODE_ENV=test jest --watch --detectOpenHandles"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -22,5 +23,16 @@
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.5.0",
     "morgan": "^1.10.1"
-  }
+  },
+  "devDependencies": {
+    "cross-env": "^10.1.0",
+    "jest": "^30.3.0",
+    "supertest": "^7.2.2"
+  },
+  "jest": {
+  "testEnvironment": "node",
+  "testTimeout": 30000,
+  "verbose": true,
+  "setupFilesAfterEnv": ["./tests/setup.js"]
+}
 }
