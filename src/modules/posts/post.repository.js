@@ -45,10 +45,8 @@ class PostRepository {
     return await Post.findByIdAndUpdate(
       id,
       updateData,
-      { new: true, runValidators: true }
-      // new:true renvoie le document mis à jour
-      // runValidators:true applique les validations du schéma
-    );
+      { returnDocument: 'after', runValidators: true }
+      );
   }
 
   async delete(id) {

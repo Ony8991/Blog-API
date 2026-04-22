@@ -20,7 +20,7 @@ class CommentRepository {
     return await Comment.findByIdAndUpdate(
       id,
       { content },
-      { new: true, runValidators: true }
+      { returnDocument: 'after', runValidators: true }
     );
   }
 
@@ -29,8 +29,6 @@ class CommentRepository {
   }
 
   async deleteByPost(postId) {
-    // supprime tous les commentaires d'un post
-    // appelé quand on supprime un post
     return await Comment.deleteMany({ post: postId });
   }
 }
