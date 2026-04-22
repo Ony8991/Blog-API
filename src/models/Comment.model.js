@@ -29,11 +29,10 @@ const commentSchema = new mongoose.Schema(
   }
 );
 
-commentSchema.pre("save", function (next) {
+commentSchema.pre("save", async function () {
   if (!this.isNew && this.isModified("content")) {
     this.isEdited = true;
   }
-  next();
 });
 
 commentSchema.index({ post: 1 });
